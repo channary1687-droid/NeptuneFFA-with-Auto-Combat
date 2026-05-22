@@ -1,0 +1,17 @@
+name: NeptuneFFAAddon
+version: 1.0.0
+main: dev.solara.neptune.ffa.FfaAddonPlugin
+api-version: '1.21'
+depend:
+  - Neptune
+commands:
+  ffa:
+    description: Join and manage Neptune FFA rounds.
+    usage: /ffa <join|leave|list|forcestart>
+  pvp:
+    description: Toggle your PvP status.
+    aliases: [pvptoggle]
+permissions:
+  neptuneffa.admin:
+    description: Allows forcing FFA rounds to start.
+    default: op

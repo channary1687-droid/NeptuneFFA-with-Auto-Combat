@@ -1,0 +1,11 @@
+enabled: true
+title: '&b&lFFA'
+lines:
+  - '&7Arena: &f<arena>'
+  - '&7Kit: &f<kit>'
+  - '&7Kills: &f<kills>'
+  - '&7Deaths: &f<deaths>'
+  - '&7Streak: &f<streak>'
+  - '&7Coins: &f<coins>'
+  - '&7Level: &f<level>'
+  - '&7Prestige: &f<prestige>'

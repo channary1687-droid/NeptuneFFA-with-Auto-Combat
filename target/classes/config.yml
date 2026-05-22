@@ -1,0 +1,439 @@
+min-players: 2
+max-players: 12
+auto-start-seconds: 10
+spread-on-start: true
+default-arena: ''
+arena-auto-regen-minutes: 5
+
+progression:
+  xp:
+    kill: 25
+    damage-per-heart: 2
+    combo: 5
+    hotzone-kill-multiplier: 2.0
+    hotzone-damage-multiplier: 2.0
+  coins:
+    kill: 10
+    hotzone-multiplier: 2.0
+  levels:
+    base-xp: 100
+    multiplier: 1.35
+  prestige:
+    max: 3
+    level-required: 100
+
+combat:
+  # General Settings
+  locale: EN
+  use-scoreboard-teams: true
+  world-exclusions:
+    - 'example'
+
+# Combat Tag Settings
+combat-tag:
+  enabled: true
+  time: 15
+  glowing: true
+  untag-on-kill: false
+  self-tag: false
+  enderpearl-renews-tag: true
+  windcharge-renews-tag: true
+  close-inventory-on-tag: true
+  duel-mode: false
+
+  display:
+    nametags:
+      enabled: true
+      prefix: '&4⚔ &8(&7%pvpmanager_combat_timeleft%s&8) &c'
+      suffix: ' &f%pvpmanager_player_health%&c❤'
+    action-bar:
+      enabled: true
+      message: '&8[&c&lCOMBAT&8] &7<time>s &8• &a<barsLeft>&#AA5555<barsPassed> &8• &7%pvpmanager_current_enemy% &8(&c%pvpmanager_current_enemy_health%❤&8)'
+      symbol: '▊'
+      total-bars: 20
+    boss-bar:
+      enabled: true
+      message: '&8&l[&c&lCOMBAT&8&l] &e&l<time> seconds'
+      bar-color: RED
+      bar-style: SOLID
+
+  actions-blocked:
+    enderpearls: false
+    chorus-fruits: false
+    teleport: true
+    unsafe-teleports: false
+    eat: false
+    totem-of-undying: false
+    place-blocks: false
+    break-blocks: false
+    open-inventory: false
+    elytra:
+      block-gliding: false
+      block-fireworks: false
+      firework-power-limit: -1
+      firework-cooldown: 2
+    interact:
+      enabled: false
+      list:
+        - 'DOOR'
+        - 'FENCE_GATE'
+        - 'BUTTON'
+        - 'BED'
+        - 'PRESSURE_PLATE'
+        - 'SLAB'
+        - 'STAIRS'
+        - 'CARPET'
+    commands:
+      enabled: true
+      whitelist: true
+      list:
+        - 'tell'
+        - 'msg'
+        - 'combattag'
+
+# Combat Log Punishments
+combat-log-punishments:
+  money-penalty: 0.0
+  kill-on-logout:
+    enabled: true
+    player-drops:
+      inventory: true
+      experience: true
+      armor: true
+  punish-on-kick:
+    enabled: true
+    match-kick-reason: false
+    kick-reasons:
+      - 'Kicked for spamming'
+      - 'disconnect.spam'
+  commands-on-combat-log:
+    - 'announce {prefix} #f09a11{player} #ed5e26tried to escape combat!'
+
+# PvP Toggle Settings
+pvp-toggle:
+  default-pvp: true
+  cooldown: 15
+  nametags:
+    enabled: false
+    prefix-on: '&4PvP On ⚔ '
+    prefix-off: '&2PvP Off ⚔ '
+  pvp-disabled-money-fee: 0
+  commands-pvp-on:
+    - 'examplecommand {player} turned pvp on'
+  commands-pvp-off:
+    - 'examplecommand {player} turned pvp off'
+  worldguard-overrides: true
+
+# Anti Border Hopping
+anti-border-hopping:
+  vulnerable:
+    enabled: true
+    renew-combat-tag: true
+  push-back:
+    enabled: true
+    force: 1.2
+    remove-elytra: false
+
+# Item Cooldowns
+item-cooldowns:
+  combat:
+    ENDER_PEARL: 5
+    WIND_CHARGE: 1
+    GOLDEN_APPLE: 30
+    ENCHANTED_GOLDEN_APPLE: 60
+  global:
+    GOLDEN_APPLE: 30
+    ENCHANTED_GOLDEN_APPLE: 60
+
+# Player Kills Settings
+player-kills:
+  money-reward: 0.0
+  money-penalty: 0.0
+  money-steal: false
+  exp-steal: 0.0
+  commands-on-kill:
+    cooldown: -1
+    commands:
+      - 'examplecommand {player} killed {victim} with {item}'
+  commands-on-respawn:
+    - 'examplecommand {player} respawned after dying in PvP combat'
+  worldguard-exclusions:
+    - 'exampleregion'
+  anti-kill-abuse:
+    enabled: true
+    max-kills: 5
+    time-limit: 20
+    warn-before: true
+    commands-on-abuse:
+      - 'kick {player} &cKill Abuse Is Not Allowed!'
+    respawn-protection: 3
+
+# Other Combat Settings
+other-combat-settings:
+  pvp-blood: true
+  ignore-no-damage-hits: true
+  protection-messages-to-action-bar: true
+  player-drop-mode: ALWAYS
+  show-health-under-name:
+    enabled: true
+    display-name: '&c❤'
+
+# Disable On Hit
+disable-on-hit:
+  fly: true
+  restore-fly: true
+  gamemode: true
+  disguise: true
+  godmode: true
+  elytra: false
+  invisibility: false
+
+combat-internal:
+  combo-reset-ms: 2500
+  cps-window-ms: 1000
+  headshot-extra-xp: 10
+  critical-extra-xp: 5
+  spawn-safe-radius: 8
+  combat-log:
+    count-death: true
+    coin-loss: 25
+
+killstreaks:
+  '3':
+    broadcast: false
+    speed-seconds: 12
+  '5':
+    coins: 50
+  '10':
+    broadcast: true
+  '15':
+    bounty: true
+  '25':
+    supply-drop: true
+  '50':
+    champion: true
+
+bounty:
+  enabled: true
+  streak-threshold: 15
+  reward-coins: 250
+  glow-target: true
+  bossbar: true
+  tracker-compass: true
+
+hotzone:
+  enabled: true
+  radius: 8.0
+  glow: true
+  xp-multiplier: 2.0
+  coins-multiplier: 2.0
+  kill-multiplier: 2.0
+
+events:
+  enabled: true
+  interval-seconds: 600
+  duration-seconds: 120
+  pool:
+    - DOUBLE_DAMAGE
+    - NO_KNOCKBACK
+    - EXPLOSIVE_ARROWS
+    - INFINITE_HEALING
+    - ONE_SHOT
+    - SPEED_FFA
+    - DEATHMATCH
+
+ui:
+  scoreboard: true
+  actionbar: true
+  bossbar: true
+  scoreboard-title: '&b&lFFA'
+  actionbar-format: '&bCombo: &f<combo> &8| &bCPS: &f<cps> &8| &bReach: &f<reach>'
+
+quests:
+  enabled: true
+  daily:
+    kill_25:
+      type: KILLS
+      target: 25
+      xp: 500
+      coins: 250
+    damage_500:
+      type: DAMAGE
+      target: 500
+      xp: 350
+      coins: 150
+    streak_10:
+      type: STREAK
+      target: 10
+      xp: 750
+      coins: 400
+  weekly:
+    kills_50:
+      type: KILLS
+      target: 50
+      xp: 1500
+      coins: 1000
+    hotzone_300:
+      type: HOTZONE_SECONDS
+      target: 300
+      xp: 1200
+      coins: 900
+
+battlepass:
+  enabled: true
+  xp-per-kill: 15
+  xp-per-event-win: 100
+  tier-xp: 250
+  max-tier: 50
+  rewards:
+    '1':
+      coins: 100
+      title: Rookie
+    '5':
+      coins: 500
+      title: Fighter
+    '10':
+      coins: 1000
+      title: Gladiator
+
+seasons:
+  enabled: true
+  current: Season 1
+
+map-rotation:
+  enabled: true
+  interval-minutes: 30
+  warning-seconds: 30
+
+anti-camp:
+  enabled: true
+  check-seconds: 5
+  radius: 4.0
+  max-still-checks: 4
+  reward-multiplier: 0.25
+  glow: true
+
+powerups:
+  enabled: true
+  interval-seconds: 90
+  despawn-seconds: 45
+  per-arena: 2
+  types:
+    SPEED:
+      material: SUGAR
+      duration-seconds: 12
+      amplifier: 1
+    STRENGTH:
+      material: BLAZE_POWDER
+      duration-seconds: 8
+      amplifier: 0
+    REGENERATION:
+      material: GHAST_TEAR
+      duration-seconds: 8
+      amplifier: 1
+    JUMP:
+      material: RABBIT_FOOT
+      duration-seconds: 12
+      amplifier: 1
+
+koth:
+  enabled: true
+  hold-seconds: 60
+  radius: 6.0
+  xp: 500
+  coins: 300
+
+gui:
+  title: '&bFFA Kits'
+  size: 27
+  fill-empty: true
+  filler-material: GRAY_STAINED_GLASS_PANE
+  kit-slots: []
+  arena-selector:
+    title: '&bFFA Arenas'
+    size: 27
+    item:
+      name: '&b<arena>'
+      lore:
+        - '&7Playing: &f<playing>'
+        - '&7Kits: &f<kits>'
+        - '&aClick to join'
+  kit-item:
+    name: '&b<kit>'
+    lore:
+      - '&7Arena: &f<arena>'
+      - '&7Playing: &f<playing>'
+      - ''
+      - '&aClick to join'
+
+messages:
+  prefix: '<gradient:#00d2ff:#3a7bd5><bold>NEPTUNE</bold></gradient> <dark_gray>»</dark_gray> '
+  joined: '<gray>ʏᴏᴜ ᴊᴏɪɴᴇᴅ ꜰꜰᴀ <white><kit></white> ᴏɴ <white><arena></white>! ⚔️ <dark_gray>(<white><count></white>/<white><max></white>)</dark_gray>'
+  left: '<red>ʟᴇꜰᴛ ꜰꜰᴀ Qᴜᴇᴜᴇ. 👋</red>'
+  already-queued: '<red>ʏᴏᴜ ᴀʀᴇ ᴀʟʀᴇᴀᴅʏ ɪɴ Qᴜᴇᴜᴇ! ⚠️</red>'
+  not-queued: '<red>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ɪɴ Qᴜᴇᴜᴇ. ❌</red>'
+  unknown-kit: '<red>ᴋɪᴛ ɴᴏᴛ ꜰᴏᴜɴᴅ: <white><kit></white> ❓</red>'
+  unknown-arena: '<red>ᴀʀᴇɴᴀ ɴᴏᴛ ꜰᴏᴜɴᴅ: <white><arena></white> ❓</red>'
+  no-arena: '<red>ɴᴏ ᴀᴠᴀɪʟᴀʙʟᴇ ᴀʀᴇɴᴀ ꜰᴏᴜɴᴅ. 🏜️</red>'
+  countdown: '<gray>ꜰꜰᴀ <white><kit></white> sᴛᴀʀᴛɪɴɢ ɪɴ <gradient:#f8ff00:#3ad59f><seconds>s</gradient>... ⏳ <dark_gray>(<white><count></white> ᴘʟᴀʏᴇʀs)</dark_gray>'
+  countdown-cancelled: '<red>ᴄᴏᴜɴᴛᴅᴏᴡɴ ᴄᴀɴᴄᴇʟʟᴇᴅ. ɴᴏᴛ ᴇɴᴏᴜɢʜ ᴘʟᴀʏᴇʀs. 🛑</red>'
+  starting: '<gradient:#00b09b:#96c93d>sᴛᴀʀᴛɪɴɢ ꜰꜰᴀ ᴡɪᴛʜ <count> ᴘʟᴀʏᴇʀs! 🚀</gradient>'
+  start-failed: '<red>ꜰᴀɪʟᴇᴅ ᴛᴏ sᴛᴀʀᴛ ꜰꜰᴀ. ᴄʜᴇᴄᴋ ᴄᴏɴsᴏʟᴇ. ⚠️</red>'
+  usage: '<gray>ᴜsᴀɢᴇ: <white>/ꜰꜰᴀ, /ꜰꜰᴀ ᴊᴏɪɴ, /ꜰꜰᴀ ʟᴇᴀᴠᴇ, /ꜰꜰᴀ ᴀʀᴇɴᴀ</white></gray>'
+  stats: '<gradient:#8e2de2:#4a00e0><bold>ʏᴏᴜʀ sᴛᴀᴛs</bold></gradient> <dark_gray>•</dark_gray> <gray>ᴋɪʟʟs: <white><kills></white> ᴅᴇᴀᴛʜs: <white><deaths></white> ᴄᴏɪɴs: <gold><coins></gold> ʟᴠʟ: <aqua><level></aqua></gray>'
+  arena-created: '<green>ᴄʀᴇᴀᴛᴇᴅ ᴀʀᴇɴᴀ <white><arena></white>! ✨</green>'
+  arena-deleted: '<red>ᴅᴇʟᴇᴛᴇᴅ ᴀʀᴇɴᴀ <white><arena></white>. 🗑️</red>'
+  arena-exists: '<red>ᴀʀᴇɴᴀ ᴀʟʀᴇᴀᴅʏ ᴇxɪsᴛs! ❌</red>'
+  arena-missing: '<red>ᴀʀᴇɴᴀ ɴᴏᴛ ꜰᴏᴜɴᴅ: <white><arena></white> ❓</red>'
+  arena-pos1: '<green>ᴘᴏsɪᴛɪᴏɴ 1 sᴇᴛ! 📍</green>'
+  arena-pos2: '<green>ᴘᴏsɪᴛɪᴏɴ 2 sᴇᴛ! 📍</green>'
+  arena-spawn: '<green>sᴘᴀᴡɴ sᴇᴛ ꜰᴏʀ <white><arena></white>! 🏠</green>'
+  arena-slot: '<gray>ᴍᴇɴᴜ sʟᴏᴛ sᴇᴛ ᴛᴏ <white><slot></white></gray>'
+  arena-icon: '<gray>ᴀʀᴇɴᴀ ɪᴄᴏɴ sᴇᴛ ᴛᴏ <white><icon></white></gray>'
+  arena-flag: '<gray>ꜰʟᴀɢ <white><flag></white> sᴇᴛ ᴛᴏ <white><state></white></gray>'
+  arena-safezone: '<gray>sᴀꜰᴇ ᴢᴏɴᴇ ʀᴀᴅɪᴜs sᴇᴛ ᴛᴏ <white><radius></white>ʟ</gray>'
+  arena-linked: '<green>ʟɪɴᴋᴇᴅ ᴋɪᴛ <white><kit></white> ᴛᴏ <white><arena></white> 🔗</green>'
+  arena-unlinked: '<red>ᴜɴʟɪɴᴋᴇᴅ ᴋɪᴛ <white><kit></white> ꜰʀᴏᴍ <white><arena></white> ✂️</red>'
+  arena-not-setup: '<red>ᴀʀᴇɴᴀ ɴᴇᴇᴅs sᴇᴛᴜᴘ ꜰɪʀsᴛ! ⚠️</red>'
+  joined-persistent: '<gradient:#00d2ff:#3a7bd5>ᴊᴏɪɴᴇᴅ <arena> ᴡɪᴛʜ ᴋɪᴛ <kit>!</gradient> ⚔️'
+  already-in-ffa: '<red>ʏᴏᴜ ᴀʀᴇ ᴀʟʀᴇᴀᴅʏ ɪɴ ꜰꜰᴀ! ❌</red>'
+  spawn-safe-zone: '<red>ᴘᴠᴘ ɪs ᴅɪsᴀʙʟᴇᴅ ɪɴ sᴀꜰᴇ ᴢᴏɴᴇ! 🛡️</red>'
+  combat-tag-safe-zone: '<red>ʏᴏᴜ ᴄᴀɴɴᴏᴛ ᴇɴᴛᴇʀ sᴀꜰᴇ ᴢᴏɴᴇ ᴡʜɪʟᴇ ɪɴ ᴄᴏᴍʙᴀᴛ! ⚔️</red>'
+  combat-tag-expired: '<gradient:#11998e:#38ef7d>ʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ. 🕊️</gradient>'
+  left-persistent: '<gray>ʏᴏᴜ ʟᴇꜰᴛ ꜰꜰᴀ. sᴇᴇ ʏᴏᴜ ʟᴀᴛᴇʀ! 👋</gray>'
+  kill-reset: '<green>ᴋɪᴛ ʀᴇꜰʀᴇsʜᴇᴅ! ♻️</green>'
+  no-linked-kits: '<red>ɴᴏ ᴋɪᴛs ʟɪɴᴋᴇᴅ ᴛᴏ ᴛʜɪs ᴀʀᴇɴᴀ. ⚠️</red>'
+  level-up: '<gradient:#f12711:#f5af19><bold>ʟᴇᴠᴇʟ ᴜᴘ!</bold></gradient> <gray>ʏᴏᴜ ᴀʀᴇ ɴᴏᴡ ʟᴇᴠᴇʟ <white><level></white>! ⭐</gray>'
+  prestige-up: '<gradient:#8e2de2:#4a00e0><bold>ᴘʀᴇsᴛɪɢᴇ ᴜᴘ!</bold></gradient> <gray>ʏᴏᴜ ᴀʀᴇ ɴᴏᴡ ᴘʀᴇsᴛɪɢᴇ <white><prestige></white>! 👑</gray>'
+  streak-broadcast: '<gradient:#ff5f6d:#ffc371><player></gradient> <gray>ɪs ᴏɴ ᴀ <white><streak></white> ᴋɪʟʟsᴛʀᴇᴀᴋ! 🔥</gray>'
+  bounty-start: '<red><bold>ʙᴏᴜɴᴛʏ!</bold></red> <white><player></white> <gray>ɪs ɴᴏᴡ ᴀ ᴛᴀʀɢᴇᴛ! 🎯</gray>'
+  bounty-claim: '<gradient:#f12711:#f5af19><killer></gradient> <gray>ᴄʟᴀɪᴍᴇᴅ <white><target></white>''s ʙᴏᴜɴᴛʏ ꜰᴏʀ <gold><coins></gold> ᴄᴏɪɴs! 💰</gray>'
+  champion: '<gradient:#f12711:#f5af19><bold>ᴄʜᴀᴍᴘɪᴏɴ!</bold></gradient> <white><player></white> <gray>ʜᴀs ʀᴇᴀᴄʜᴇᴅ ᴄʜᴀᴍᴘɪᴏɴ sᴛᴀᴛᴜs! 🏆</gray>'
+  supply-drop: '<gradient:#00d2ff:#3a7bd5><bold>sᴜᴘᴘʟʏ ᴅʀᴏᴘ!</bold></gradient> <gray>ʟᴀɴᴅɪɴɢ ɴᴇᴀʀ <white><player></white>! 📦</gray>'
+  event-start: '<gradient:#8e2de2:#4a00e0><bold>ᴇᴠᴇɴᴛ!</bold></gradient> <white><event></white> <gray>ʜᴀs sᴛᴀʀᴛᴇᴅ! 🎊</gray>'
+  event-end: '<gray>ᴇᴠᴇɴᴛ ᴇɴᴅᴇᴅ. ᴛʜᴀɴᴋs ꜰᴏʀ ᴘʟᴀʏɪɴɢ! 🏁</gray>'
+  quest-complete: '<gradient:#11998e:#38ef7d><bold>Qᴜᴇsᴛ!</bold></gradient> <white><quest></white> <gray>ᴄᴏᴍᴘʟᴇᴛᴇᴅ! <white>+<xp> XP, +<coins> ᴄᴏɪɴs</white> ✨</gray>'
+  battlepass-tier: '<gradient:#f12711:#f5af19><bold>ʙᴀᴛᴛʟᴇᴘᴀss!</bold></gradient> <gray>ᴛɪᴇʀ <white><tier></white> ᴜɴʟᴏᴄᴋᴇᴅ! 🏅</gray>'
+  battlepass: '<gradient:#f12711:#f5af19><bold>ʙᴀᴛᴛʟᴇᴘᴀss</bold></gradient> <dark_gray>•</dark_gray> <gray>ᴛɪᴇʀ: <white><tier>/<max></white> xᴘ: <white><xp>/<needed></white></gray>'
+  season: '<gradient:#00d2ff:#3a7bd5><bold>sᴇᴀsᴏɴ:</bold></gradient> <white><season></white> ❄️'
+  top-header: '<gradient:#8e2de2:#4a00e0><bold>ᴛᴏᴘ 10 <type></bold></gradient>'
+  top-line: '<dark_gray>#<rank></dark_gray> <white><player></white> <dark_gray>»</dark_gray> <aqua><value></aqua>'
+  reload: '<green>ᴄᴏɴꜰɪɢᴜʀᴀᴛɪᴏɴ ʀᴇʟᴏᴀᴅᴇᴅ! ⚙️</green>'
+  event-forced: '<gradient:#8e2de2:#4a00e0>ꜰᴏʀᴄᴇᴅ ᴇᴠᴇɴᴛ: <event></gradient> ⚡'
+  event-stopped: '<red>sᴛᴏᴘᴘᴇᴅ ᴀᴄᴛɪᴠᴇ ᴇᴠᴇɴᴛ. 🛑</red>'
+  bounty-forced: '<red>ꜰᴏʀᴄᴇᴅ ʙᴏᴜɴᴛʏ ᴏɴ <white><player></white>! 🎯</red>'
+  anti-camp: '<red>ᴅᴏɴ''ᴛ ᴄᴀᴍᴘ! ᴍᴏᴠᴇ ᴛᴏ ᴋᴇᴇᴘ ʀᴇᴡᴀʀᴅs. 🏕️</red>'
+  koth-captured: '<gradient:#00d2ff:#3a7bd5><player></gradient> <gray>ᴄᴀᴘᴛᴜʀᴇᴅ ᴛʜᴇ ʜɪʟʟ! 🚩</gray>'
+  powerup: '<gradient:#11998e:#38ef7d>ᴘɪᴄᴋᴇᴅ ᴜᴘ <powerup> ᴘᴏᴡᴇʀᴜᴘ! ⚡</gradient>'
+  rotation-warning: '<red>ᴍᴀᴘ ʀᴏᴛᴀᴛɪɴɢ ɪɴ <white><seconds>s</white>... 🌀</red>'
+  rotation-complete: '<green>ʀᴏᴛᴀᴛᴇᴅ ᴛᴏ ᴀʀᴇɴᴀ <white><arena></white>! 🗺️</green>'
+  command-blocked-in-combat: '<red>ᴄᴏᴍᴍᴀɴᴅ ʙʟᴏᴄᴋᴇᴅ ɪɴ ᴄᴏᴍʙᴀᴛ! ⚔️</red>'
+  teleport-blocked-in-combat: '<red>ᴛᴇʟᴇᴘᴏʀᴛ ʙʟᴏᴄᴋᴇᴅ ɪɴ ᴄᴏᴍʙᴀᴛ! 🌀</red>'
+  enderpearl-blocked-in-combat: '<red>ᴇɴᴅᴇʀᴘᴇᴀʀʟs ʙʟᴏᴄᴋᴇᴅ ɪɴ ᴄᴏᴍʙᴀᴛ! 🔮</red>'
+  eating-blocked-in-combat: '<red>ᴇᴀᴛɪɴɢ ʙʟᴏᴄᴋᴇᴅ ɪɴ ᴄᴏᴍʙᴀᴛ! 🍎</red>'
+  interaction-blocked-in-combat: '<red>ɪɴᴛᴇʀᴀᴄᴛɪᴏɴ ʙʟᴏᴄᴋᴇᴅ ɪɴ ᴄᴏᴍʙᴀᴛ! ✋</red>'
+  breaking-blocked-in-combat: '<red>ʙʀᴇᴀᴋɪɴɢ ʙʟᴏᴄᴋᴇᴅ ɪɴ ᴄᴏᴍʙᴀᴛ! ⛏️</red>'
+  placing-blocked-in-combat: '<red>ᴘʟᴀᴄɪɴɢ ʙʟᴏᴄᴋᴇᴅ ɪɴ ᴄᴏᴍʙᴀᴛ! 🧱</red>'
+  elytra-blocked-in-combat: '<red>ᴇʟʏᴛʀᴀ ɢʟɪᴅɪɴɢ ʙʟᴏᴄᴋᴇᴅ ɪɴ ᴄᴏᴍʙᴀᴛ! 🦅</red>'
+  pvp-disabled-attacker: '<red>ʏᴏᴜ ʜᴀᴠᴇ ᴘᴠᴘ ᴅɪsᴀʙʟᴇᴅ! ᴜsᴇ /ᴘᴠᴘ. 🛡️</red>'
+  pvp-disabled-victim: '<red>ᴛʜᴀᴛ ᴘʟᴀʏᴇʀ ʜᴀs ᴘᴠᴘ ᴅɪsᴀʙʟᴇᴅ! 🛡️</red>'
